@@ -57,7 +57,27 @@ class BattleshipTest(unittest.TestCase):
         actual_value = test_object.board[3][4]
         assert (actual_value == expected_value)
 
+    @staticmethod
+    def testFireShot():
+        test_object = Board()
+        m = Model()
+        ship = Ship(4, (3, 4), 'v')
+        m.place_boat(test_object, ship)
+
+        # test that a shot will hit a ship
+        expected_value = 'X'
+        m.fire_shot(test_object, (3, 4))
+        actual_value = test_object.board[3][4]
+        assert(actual_value == expected_value)
+
+        # test that a shot will miss the ship
+        expected_value = '*'
+        m.fire_shot(test_object, (0, 0))
+        actual_value = test_object.board[0][0]
+        assert(actual_value == expected_value)
+
 if __name__ == '__main__':
     b = BattleshipTest()
     b.testBoardInit()
     b.testPlaceBoat()
+    b.testFireShot()

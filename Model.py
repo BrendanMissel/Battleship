@@ -13,3 +13,7 @@ class Model:
                     board.board[ship.head[0]][ship.head[1]+i] = 'O'
         except:
             print('Boat is out of bounds. Try again.')
+
+    @staticmethod
+    def fire_shot(board, loc):
+        pass
