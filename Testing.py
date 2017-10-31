@@ -13,13 +13,19 @@ class BattleshipTest(unittest.TestCase):
 
         # test the size of the Board object
         expected_value = 10
-        actual_value = 0
-
+        actual_value = test_object.size
         assert(actual_value == expected_value)
 
         # test that the board is empty
         expected_value = ' '
-        actual_value = ''
+
+        for row in test_object.board:
+            for x in row:
+                if x != ' ':
+                    actual_value = ''
+                    break
+                else:
+                    actual_value = ' '
         assert(actual_value == expected_value)
 
 if __name__ == '__main__':
