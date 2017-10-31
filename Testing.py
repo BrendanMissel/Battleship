@@ -9,3 +9,6 @@ from Ship import Ship
 
 class BattleshipTest(unittest.TestCase):
     pass
+
+if __name__ == '__main__':
+    pass
