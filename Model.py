@@ -5,13 +5,14 @@ class Model:
     @staticmethod
     def place_boat(board, ship):
         try:
-            if ship.orientation == 'v':
-                for i in range(0, ship.size):
-                    board.board[ship.head[0]+i][ship.head[1]] = 'O'
+            if Model.validate_loc(board, ship):
+                if ship.orientation == 'v':
+                    for i in range(0, ship.size):
+                        board.board[ship.head[0]+i][ship.head[1]] = 'O'
 
-            elif ship.orientation == 'h':
-                for i in range(0, ship.size):
-                    board.board[ship.head[0]][ship.head[1]+i] = 'O'
+                elif ship.orientation == 'h':
+                    for i in range(0, ship.size):
+                        board.board[ship.head[0]][ship.head[1]+i] = 'O'
         except:
             print('Boat is out of bounds. Try again.')
 
@@ -28,3 +29,7 @@ class Model:
 
         except:
             print('Shot is invalid. Try again.')
+
+    @staticmethod
+    def validate_loc(board, ship):
+        return True

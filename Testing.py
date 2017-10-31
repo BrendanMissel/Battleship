@@ -76,8 +76,22 @@ class BattleshipTest(unittest.TestCase):
         actual_value = test_object.board[0][0]
         assert(actual_value == expected_value)
 
+    @staticmethod
+    def testOutOfBounds():
+        test_object = Board()
+        m = Model()
+
+        # test that a ship cannot be placed outside of the board.
+        ship = Ship(5, (9, 9), 'v')
+        m.place_boat(test_object, ship)  # place_boat calls a function called validate_loc() which will check for OoB
+        expected_value = ' '
+        actual_value = test_object.board[9][9]
+        assert(actual_value == expected_value)
+
+
 if __name__ == '__main__':
     b = BattleshipTest()
     b.testBoardInit()
     b.testPlaceBoat()
     b.testFireShot()
+    b.testOutOfBounds()
