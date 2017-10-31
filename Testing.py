@@ -45,8 +45,17 @@ class BattleshipTest(unittest.TestCase):
         expected_value = 'O'
         ship = Ship(4, (3, 4), 'h')
         m.place_boat(test_object, ship)
-        actual_value = test_object.board[7][4]
+        actual_value = test_object.board[3][7]  # Values switched because Board.board is indexed by (y,x)
         assert(actual_value == expected_value)
+
+        actual_value = test_object.board[3][6]
+        assert (actual_value == expected_value)
+
+        actual_value = test_object.board[3][5]
+        assert (actual_value == expected_value)
+
+        actual_value = test_object.board[3][4]
+        assert (actual_value == expected_value)
 
 if __name__ == '__main__':
     b = BattleshipTest()

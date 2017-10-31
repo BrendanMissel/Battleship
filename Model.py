@@ -1,7 +1,15 @@
 # model class
-from Board import Board
-from Ship import Ship
+
 
 class Model:
-    def place_boat(self, board, ship):
-        pass
+    @staticmethod
+    def place_boat(board, ship):
+        try:
+            if ship.orientation == 'v':
+                for i in range(0, ship.size):
+                    board.board[ship.head[0]+i][ship.head[1]] = 'O'
+            elif ship.orientation == 'h':
+                for i in range(0, ship.size):
+                    board.board[ship.head[0]][ship.head[1]+i] = 'O'
+        except:
+            print('Boat is out of bounds. Try again.')
